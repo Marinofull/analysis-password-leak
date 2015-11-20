@@ -1,0 +1,1 @@
+O arquivo contém as senhas vazadas no ataque ao exécito brasileiro este dia 08/11, postado no [pastebin](http://pastebin.com/DrYncQYH). As informações de identidade dos usuários foram omitidas por não serem relevantes neste estudo.

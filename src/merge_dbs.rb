@@ -1,6 +1,15 @@
 IO.write(
   "leak_summary.txt",
-  Dir.glob("#{ARGV[0]}/*").map do |f|
+  ARGV.map do |arg|
+    if File.file?(arg)
+      arg
+    elsif File.directory?(arg)
+      Dir.glob("#{arg}/*")
+    else
+      puts "#{arg} not file or directory"
+      []
+    end
+  end.flatten.map do |f|
     IO.readlines(f).map do |e|
       s = e.strip.split
       puts "Null password in #{f}! Count: #{s[0]}" if s[1].nil?

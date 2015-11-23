@@ -29,9 +29,10 @@ passwords =
 
 total = passwords.reduce(0){|partial, pass| partial += pass[1] }
 
-IO.write(
-  "leak_summary.txt",
+leak_summary =
+  "Total: #{total}\n" +
   passwords.sort_by{|e| e[1] }.reverse.reduce("") do |str, e|
     str += "#{e[1]}\t#{'%.3f' % (e[1].to_f * 100 / total)}%\t#{e[0]}\n"
   end
-)
+
+IO.write("leak_summary.txt", leak_summary)

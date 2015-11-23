@@ -10,10 +10,11 @@ passwords =
     end
   end.flatten.map do |f|
     IO.readlines(f).map do |e|
-      s = e.strip.split
+      e_fixed = e.encode('UTF-8', invalid: :replace, undef: :replace)
+      s = e_fixed.strip.split
       puts "Null password in #{f}! Count: #{s[0]}" if s[1].nil?
     
-      e.strip
+      e_fixed.strip
     end
   end.flatten.map do |e|
     s = e.split

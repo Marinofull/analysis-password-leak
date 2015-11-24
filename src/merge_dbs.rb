@@ -1,38 +1,66 @@
-passwords =
-  ARGV.map do |arg|
-    if File.file?(arg)
-      arg
-    elsif File.directory?(arg)
-      Dir.glob("#{arg}/*")
-    else
-      puts "#{arg} not file or directory"
-      []
-    end
-  end.flatten.map do |f|
-    IO.readlines(f).map do |e|
-      e_fixed = e.encode('UTF-8', invalid: :replace, undef: :replace)
-      s = e_fixed.strip.split
-      puts "Null password in #{f}! Count: #{s[0]}" if s[1].nil?
-    
-      e_fixed.strip
-    end
-  end.flatten.map do |e|
-    s = e.split
-
-    [s[0].to_i, s[1]]
-  end.group_by{|e| e[1] }.map do |k, g|
-    [
-      k,
-      g.map{|e| e[0] }.reduce(&:+)
-    ]
+class PasswordDB
+  def initialize(entry_list)
+    @database =
+      entry_list.map do |arg|
+        if File.file?(arg)
+          arg
+        elsif File.directory?(arg)
+          Dir.glob("#{arg}/*")
+        else
+          puts "#{arg} not file or directory"
+          []
+        end
+      end.flatten.map do |f|
+        IO.readlines(f).map do |e|
+          e_fixed = e.encode('UTF-8', invalid: :replace, undef: :replace)
+          {file: f, line: e_fixed.strip}
+        end
+      end.flatten.map do |e|
+        s = e[:line].split
+        puts "Null password in #{e[:file]}! Count: #{s[0]}" if s[1].nil?
+        
+        {file: e[:file], count: s[0].to_i, pass: s[1]}
+      end
   end
+  
+  def total
+    @total = @database.reduce(0) do |partial, e|
+      partial += e[:count]
+    end if @total.nil?
+    
+    @total
+  end
+  
+  def files
+    @files = @database.map{|e| e[:file] }.uniq if @files.nil?
+    
+    @files
+  end
+  
+  def group_all
+    @database.group_by{|e| e[:pass] }.map do |k, g|
+      {
+        pass: k,
+        count: g.map{|e| e[:count] }.reduce(&:+),
+        files: g.map{|e| e[:file] }
+      }
+    end
+  end
+end
 
-total = passwords.reduce(0){|partial, pass| partial += pass[1] }
+passwords = PasswordDB.new(ARGV)
 
 leak_summary =
-  "Total: #{total}\n" +
-  passwords.sort_by{|e| e[1] }.reverse.reduce("") do |str, e|
-    str += "#{e[1]}\t#{'%.3f' % (e[1].to_f * 100 / total)}%\t#{e[0]}\n"
+  "Files analysed:\n" +
+  passwords.files.reduce("") do |str, f|
+    str += "\t#{f}\n"
+  end +
+  "Total: #{passwords.total}\n" +
+  passwords.group_all.sort_by{|e| e[:count] }.reverse.reduce("") do |str, e|
+    str +=
+      "#{e[:count]}\t"\
+      "#{'%.3f' % (e[:count].to_f * 100 / passwords.total)}%\t"\
+      "#{e[:pass]}\n"
   end
 
 IO.write("leak_summary.txt", leak_summary)

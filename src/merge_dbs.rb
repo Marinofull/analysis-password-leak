@@ -125,19 +125,22 @@ def date_pattern(passwords)
   Consecutive Exactly eight digits: #{eight_digits} - #{eight_digits_percent} %
   Are eight digits date: #{eight_digits_date} - #{eight_digits_date_percent} %
 
+  Amount Date       total percent       date8 percent       digits8 percent
+  DDMMYYYY #{ddmmyyyy} \t #{( ddmmyyyy/passwords.total ) * 100.00} % \t #{ ( ddmmyyyy/eight_digits_date) * 100.00} % \t #{ ( ddmmyyyy/eight_digits) * 100.00} %
+  MMDDYYYY #{mmddyyyy} \t #{( mmddyyyy/passwords.total ) * 100.00} % \t #{ ( mmddyyyy/eight_digits_date) * 100.00} % \t #{ ( mmddyyyy/eight_digits) * 100.00} %
+  YYYYMMDD #{yyyymmdd} \t #{( yyyymmdd/passwords.total ) * 100.00} % \t #{ ( yyyymmdd/eight_digits_date) * 100.00} % \t #{ ( yyyymmdd/eight_digits) * 100.00} %
 
-  DDMMYYYY #{ddmmyyyy} \t #{( ddmmyyyy/passwords.total ) * 100.00} % \t #{ ( ddmmyyyy/eight_digits_date) * 100.00} %
-  MMDDYYYY #{mmddyyyy} \t #{( mmddyyyy/passwords.total ) * 100.00} % \t #{ ( mmddyyyy/eight_digits_date) * 100.00} %
-  YYYYMMDD #{yyyymmdd} \t #{( yyyymmdd/passwords.total ) * 100.00} % \t #{ ( yyyymmdd/eight_digits_date) * 100.00} %
   -------------------------------------------------------------------------------------------------------------
 
   -------------------------------------------------------------------------------------------------------------
-  Consecutive Exactly six digits: #{six_digits} - #{six_digits_percent} %
+   Consecutive Exactly six digits: #{six_digits} - #{six_digits_percent} %
   Are six digits date: #{six_digits_date} - #{six_digits_date_percent} %
 
-  DDMMYY #{ddmmyy} \t \t #{( ddmmyy/passwords.total ) * 100.00} % \t #{ ( ddmmyy/six_digits_date ) * 100.00} %
-  MMDDYY #{mmddyy} \t \t #{( mmddyy/passwords.total ) * 100.00} % \t #{ ( mmddyy/six_digits_date ) * 100.00} %
-  YYMMDD #{yymmdd} \t \t #{( yymmdd/passwords.total ) * 100.00} % \t #{ ( yymmdd/six_digits_date ) * 100.00} %
+  Amount Date       total percent       date6 percent       digits6 percent
+  DDMMYY #{ddmmyy} \t \t #{( ddmmyy/passwords.total ) * 100.00} % \t #{ ( ddmmyy/six_digits_date ) * 100.00} % \t #{ ( ddmmyy/six_digits) * 100.00} %
+
+  MMDDYY #{mmddyy} \t \t #{( mmddyy/passwords.total ) * 100.00} % \t #{ ( mmddyy/six_digits_date ) * 100.00} % \t #{ ( mmddyy/six_digits) * 100.00} %
+  YYMMDD #{yymmdd} \t \t #{( yymmdd/passwords.total ) * 100.00} % \t #{ ( yymmdd/six_digits_date ) * 100.00} % \t #{ ( yymmdd/six_digits) * 100.00} %
  -------------------------------------------------------------------------------------------------------------
 EOF
 end

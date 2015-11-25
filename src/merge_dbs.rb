@@ -42,13 +42,14 @@ class PasswordDB
   end
 
   def group_all
-    @database.group_by{|e| e[:pass] }.map do |k, g|
+    @group = @database.group_by{|e| e[:pass] }.map do |k, g|
       {
         pass: k,
         count: g.map{|e| e[:count] }.reduce(&:+),
         files: g.map{|e| e[:file] }
-      }
-    end
+      } 
+    end if @group.nil?
+    @group
   end
 end
 
@@ -145,7 +146,42 @@ def date_pattern(passwords)
 EOF
 end
 
+def structure_analysis(passwords)
+  any_digits = 0
+  only_lowercase_letter = 0
+  lowercase_and_digits = 0
+  lowercase_and_symbols = 0
+  digit_and_symbols = 0
+  symbols = 0
+  lowercase_digit_symbols = 0
+  passwords.group_all.each do |e|
+    any_digits += e[:count] if e[:pass] =~ /^\d+$/
+    only_lowercase_letter += e[:count] if e[:pass] =~ /^[a-z]+$/
+    lowercase_and_digits += e[:count] if e[:pass] =~ /^([a-z]|\d)+$/
+    lowercase_and_symbols += e[:count] if e[:pass] =~ /^(\W|_|[a-z])+$/
+    digit_and_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d)+$/
+    symbols += e[:count] if e[:pass] =~ /^(\W|_)+$/
+    lowercase_digit_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d|[a-z])+$/ and e[:pass] =~ /(\W|_)+/ and e[:pass] =~ /\d+/ and e[:pass] =~ /[a-z]+/
+  end
+  lowercase_and_digits -= ( any_digits + only_lowercase_letter )
+  lowercase_and_symbols -= ( symbols + only_lowercase_letter )
+  digit_and_symbols -= ( symbols + any_digits )
+
+  <<EOF
+    #{any_digits} any digits
+    #{only_lowercase_letter} only lowercase letters
+    #{lowercase_and_digits} lowercase and digits
+    #{lowercase_and_symbols} lowercase and symbols
+    #{digit_and_symbols} digit and symbols
+    #{symbols} symbols
+    #{lowercase_digit_symbols} lowercase digit symbols
+EOF
+end
+
+
 passwords = PasswordDB.new(ARGV)
+
+structure_summary = structure_analysis(passwords)
 
 leak_summary =
   "Files analysed:\n" +
@@ -163,3 +199,4 @@ leak_summary =
 
 
 IO.write("leak_summary.txt", leak_summary)
+IO.write("structure_summary.txt", structure_summary)

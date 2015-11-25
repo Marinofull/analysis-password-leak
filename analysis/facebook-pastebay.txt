@@ -1,0 +1,76 @@
+Files analysed:
+	dontchange/leaks/facebook-pastebay-withcount.txt
+Total: 61
+  -------------------------------------------------------------------------------------------------------------
+  Consecutive Exactly eight digits: 1.0 - 1.639344262295082 %
+  Are eight digits date: 1.0 - 1.639344262295082 %
+
+
+  DDMMYYYY 1.0 	 1.639344262295082 % 	 100.0 %
+  MMDDYYYY 0.0 	 0.0 % 	 0.0 %
+  YYYYMMDD 0.0 	 0.0 % 	 0.0 %
+  -------------------------------------------------------------------------------------------------------------
+
+  -------------------------------------------------------------------------------------------------------------
+  Consecutive Exactly six digits: 4.0 - 6.557377049180328 %
+  Are six digits date: 0.0 - 0.0 %
+
+  DDMMYY 0.0 	 	 0.0 % 	 NaN %
+  MMDDYY 0.0 	 	 0.0 % 	 NaN %
+  YYMMDD 0.0 	 	 0.0 % 	 NaN %
+ -------------------------------------------------------------------------------------------------------------
+2	3.279%	123456
+2	3.279%	123456789
+2	3.279%	2251084185
+2	3.279%	LOL12345
+2	3.279%	dawder
+2	3.279%	jordyt
+1	1.639%	123321
+1	1.639%	123456789m
+1	1.639%	123windi
+1	1.639%	124050
+1	1.639%	1994kp
+1	1.639%	22042009
+1	1.639%	2406923269
+1	1.639%	950380
+1	1.639%	DylanandAdam
+1	1.639%	Fingerweg
+1	1.639%	aaparken
+1	1.639%	aaparken42
+1	1.639%	acosta90
+1	1.639%	alcatorda2
+1	1.639%	baba01
+1	1.639%	bagdad
+1	1.639%	buddy123
+1	1.639%	canada
+1	1.639%	cocacola97
+1	1.639%	countvon
+1	1.639%	didierdemaeyer
+1	1.639%	eminem
+1	1.639%	gemigencola
+1	1.639%	goldie
+1	1.639%	hahattmm
+1	1.639%	k8f8vt
+1	1.639%	kaka22
+1	1.639%	kreten5
+1	1.639%	lamer
+1	1.639%	larahornby
+1	1.639%	loompe
+1	1.639%	lukaluka
+1	1.639%	mitsuko
+1	1.639%	moravanska
+1	1.639%	movies
+1	1.639%	myliuagne
+1	1.639%	nasu159753
+1	1.639%	nikki11
+1	1.639%	october87
+1	1.639%	palle969
+1	1.639%	pivskid1912
+1	1.639%	poupous
+1	1.639%	punted
+1	1.639%	qwq28xml
+1	1.639%	satanicbible
+1	1.639%	skeaik05
+1	1.639%	solidussnake
+1	1.639%	tripp88
+1	1.639%	warcraft

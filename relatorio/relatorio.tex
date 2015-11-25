@@ -1,86 +1,107 @@
-\documentclass[12pt]{article}
+        \documentclass[12pt]{article}
 
-\usepackage{sbc-template}
+        \usepackage{sbc-template}
 
-\usepackage{graphicx,url}
+        \usepackage{graphicx,url}
 
-%\usepackage[brazil]{babel}
-\usepackage[latin1]{inputenc}
-
-
-\sloppy
-
-\title{Uma análise de padões em senhas}
-
-\author{Marino Souza S., Nilton V. C. Júnior, Luiz R. lala}
-
-\address{Instituto de Matemática -- Universidade Federal da Bahia
-  (UFBA)\\
-  \email{\{marino, niltonvasques\}@openmailbox.org, luizromario@gmail.com}
-}
-
-\begin{document}
-
-\maketitle
-
-\begin{abstract}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-\end{abstract}
-
-\begin{resumo}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-\end{resumo}
+        %\usepackage[brazil]{babel}
+        \usepackage[latin1]{inputenc}
 
 
-\section{Introdução}
+        \sloppy
 
-O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}, os autores deste trabalho apresentam estatísticas de padrões mais comuns em suas bases de dados, com o objetivo de contribuir para que dicinário melhores sejam criados e políticas de senhas sejam fortalecidas.
+        \title{Uma análise de padões em senhas}
 
-Conferences that publish just abstracts ask for \textbf{one}-page texts.
+        \author{Marino Souza S., Nilton V. C. Júnior, Luiz R. Rios}
 
-\section{Estatísticas Comuns} \label{sec:firstpage}
+        \address{Instituto de Matemática -- Universidade Federal da Bahia
+          (UFBA)\\
+          \email{\{marino, niltonvasques\}@openmailbox.org, luizromario@gmail.com}
+        }
 
-fazer uma explicação da sessão.
+        \begin{document}
 
-\begin{table}[ht]
+        \maketitle
+
+        \begin{abstract}
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        \end{abstract}
+
+        \begin{resumo}
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        \end{resumo}
+
+
+        \section{Introdução}
+
+        O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}, os autores deste trabalho apresentam estatísticas de padrões mais comuns em suas bases de dados, com o objetivo de contribuir para que dicinário melhores sejam criados e políticas de senhas sejam fortalecidas.
+
+        introdução das bases de dados, as inconsistências que tinham, de onde vieram, total de cada base, total geral, e o total geral após a limpesa de senhas bugadas
+        Conferences that publish just abstracts ask for \textbf{one}-page texts.
+
+        \section{Estatísticas Comuns} \label{sec:firstpage}
+
+        fazer uma explicação da sessão.
+
+        \begin{table}[ht]
+            \centering
+            
+            \begin{tabular}{clr}
+                \hline
+                & Skull leak & BR army\\
+                \hline
+                1 & 123456(0.202\%) & 12345678(4.864\%)\\
+                2 & password1(0.119\%) & 123456789(1.009\%) \\
+                3 & fuck(0.092\%) & 87654321(0.230\%)\\
+                4 & abc123(0.090\%) & 10203040(0.204\%)\\
+                5 & fuckyou(0.064\%) & 06121966(0.153\%)\\
+                \hline
+            \end{tabular}
+
+            \caption{texto da tabela}
+            \label{table:tablegeneral}
+
+        \end{table}
+
+        Explicar oq a tabela \ref{table:tablegeneral} significa.
+        %Bình Hòa Massacre, Guerra do vietnam 6 de dezembro de 1966
+
+        The abstract and ``resumo'' (if is the case) must be in 12 point Times font,
+        indented 0.8cm on both sides. The word \textbf{Abstract} and \textbf{Resumo},
+        should be written in boldface and must precede the text.
+
+        \subsection{Subsections}
+
+        The subsection titles must be in boldface, 12pt, flush left.
+
+\begin{table}[h]
     \centering
-    
-    \begin{tabular}{clr}
+
+    \begin{tabular}{r r r r r r}
         \hline
-        & Skull leak & BR army\\
+        & Exatamente Oito Digitos & Data valida & YYYYMMDD & MMDDYYYY & DDMMYYYY\\
         \hline
-        1 & 123456 & 12345678\\
-        2 & password1 & 123456789 \\
-        3 & fuck & 87654321\\
-        4 & abc123 & 10203040\\
-        5 & fuckyou & 06121966\\
+        Skull-leak & 638(0.990\%) & 219(0.340\%) & 19(8.676\%) & 37(16.894\%) & 163(74.492\%)\\
+        \hline
+        BrArmy & 4,565(45.513\%) & 1365(17.426\%) & 25(1.832\%) & 380(27.839\%) & 960(70.330\%)\\
         \hline
     \end{tabular}
 
     \caption{texto da tabela}
-    \label{table:tablegeneral}
+    \label{table:table-date}
 
 \end{table}
 
-Explicar oq a tabela \ref{table:tablegeneral} significa.
-
-The abstract and ``resumo'' (if is the case) must be in 12 point Times font,
-indented 0.8cm on both sides. The word \textbf{Abstract} and \textbf{Resumo},
-should be written in boldface and must precede the text.
-
-\subsection{Subsections}
-
-The subsection titles must be in boldface, 12pt, flush left.
 
 \section{Figures and Captions}\label{sec:figs}
 

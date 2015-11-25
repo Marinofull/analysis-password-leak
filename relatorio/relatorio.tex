@@ -23,31 +23,16 @@
 
         \maketitle
 
-        \begin{abstract}
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        \end{abstract}
-
         \begin{resumo}
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}. O presente artigo visa executar uma análise em cima de senhas web com o objetivo de encontrar padrões que futuramente sirvam para melhorar dicionário de adivinhação, ou desenvolver melhores políticas de senhas.
         \end{resumo}
 
 
         \section{Introdução}
-
-        O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}, os autores deste trabalho apresentam estatísticas de padrões mais comuns em suas bases de dados, com o objetivo de contribuir para que dicinário melhores sejam criados e políticas de senhas sejam fortalecidas.
-
-        introdução das bases de dados, as inconsistências que tinham, de onde vieram, total de cada base, total geral, e o total geral após a limpesa de senhas bugadas
-        Conferences that publish just abstracts ask for \textbf{one}-page texts.
+        
+        As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no website SkullSecurity (https://blog.skullsecurity.org/) contendo senhas de provavel usuários de lingua inglesa, e outra base encontrada no PasteBin contendo um orgão de defesa de um governo de um país que neste trabalho será omitido o nome, algumas vezes utilizado o codnome: BrArmy.
+        A quantidade de senhas totalizaram 64,493 provindas do SkullSecurity e 7,834 do BrArmy. Em ambos as bases de senhas haviam senhas em branco e com charset inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da SkullSecurity e 7,833 da BrArmy.
+        Durante este trabalho os autores preferiam utilizar o sistema internacional para representação de números reais e multiplos de mil.
 
         \section{Estatísticas Comuns} \label{sec:firstpage}
 
@@ -68,7 +53,7 @@
                 \hline
             \end{tabular}
 
-            \caption{texto da tabela}
+            \caption{Senhas mais usadas nas duas bases}
             \label{table:tablegeneral}
 
         \end{table}
@@ -120,6 +105,29 @@
     \label{table:table-date-six}
 
 \end{table}
+
+\begin{table}[ht]
+    \centering
+            
+     \begin{tabular}{clr}
+         \hline
+         & Skull leak & BR army\\
+         \hline
+         1 & password1(0.119\%) & flamengo(0.115\%)\\
+         2 & fuck(0.092\%) & exercito(0.115\%) \\
+         3 & fuckyou(0.064\%) & infantaria(0.115\%)\\
+         4 & monkey(0.045\%) & cavalaria(0.102\%)\\
+         5 & iloveyou1(0.043\%) & guilherme(0.077\%)\\
+         \hline
+     \end{tabular}
+
+     \caption{Palavras Inglesas/Portuguesas mais usadas}
+     \label{table:most-comon-language}
+
+\end{table}
+        
+        Curiosamente os usuário de lingua inglesa preferem senhas relacionadas a palavras de baixo calão, como apresentado em \ref{table:most-comon-language}, enquanto os usuário da base BrArmy recorrem em sua maioria a palavras que tem alguma relação as forças armadas. 
+
 
 \section{Figures and Captions}\label{sec:figs}
 

@@ -1,0 +1,7 @@
+    4788 any digits
+    896 only lowercase letters
+    1819 lowercase and digits
+    7 lowercase and symbols
+    5 digit and symbols
+    0 symbols
+    20 lowercase digit symbols

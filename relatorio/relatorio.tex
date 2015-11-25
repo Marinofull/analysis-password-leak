@@ -87,21 +87,39 @@
 \begin{table}[h]
     \centering
 
-    \begin{tabular}{r r r r r r}
+    \begin{tabular}{r r r r r}
         \hline
-        & Exatamente Oito Digitos & Data valida & YYYYMMDD & MMDDYYYY & DDMMYYYY\\
+        & Exatamente Oito Digitos & DDMMYYYY & MMDDYYYY & YYYYMMDD\\
         \hline
-        Skull-leak & 638(0.990\%) & 219(0.340\%) & 19(8.676\%) & 37(16.894\%) & 163(74.492\%)\\
+        Skull-leak & 0.990\% & 25.547\% & 5.799\% & 2.978\%\\
         \hline
-        BrArmy & 4,565(45.513\%) & 1365(17.426\%) & 25(1.832\%) & 380(27.839\%) & 960(70.330\%)\\
+        BrArmy & 45.513\% & 26.928\% & 10.659\% & 0.701\%\\
         \hline
     \end{tabular}
 
     \caption{texto da tabela}
-    \label{table:table-date}
+    \label{table:table-date-eight}
 
 \end{table}
 
+
+\begin{table}[h]
+    \centering
+
+    \begin{tabular}{r r r r r}
+        \hline
+        & Exatamente Seis Dígitos & DDMMYY & MMDDYY & YYMMDD\\
+        \hline
+        Skull-leak & 1.654\% & 36.210\% & 19.325\% & 11.445\%\\
+        \hline
+        BrArmy & 0\% & & & \\
+        \hline
+    \end{tabular}
+
+    \caption{texto da tabela}
+    \label{table:table-date-six}
+
+\end{table}
 
 \section{Figures and Captions}\label{sec:figs}
 

@@ -5,19 +5,22 @@ Total: 61
   Consecutive Exactly eight digits: 1.0 - 1.639344262295082 %
   Are eight digits date: 1.0 - 1.639344262295082 %
 
+  Amount Date       total percent       date8 percent       digits8 percent
+  DDMMYYYY 1.0 	 1.639344262295082 % 	 100.0 % 	 100.0 %
+  MMDDYYYY 0.0 	 0.0 % 	 0.0 % 	 0.0 %
+  YYYYMMDD 0.0 	 0.0 % 	 0.0 % 	 0.0 %
 
-  DDMMYYYY 1.0 	 1.639344262295082 % 	 100.0 %
-  MMDDYYYY 0.0 	 0.0 % 	 0.0 %
-  YYYYMMDD 0.0 	 0.0 % 	 0.0 %
   -------------------------------------------------------------------------------------------------------------
 
   -------------------------------------------------------------------------------------------------------------
-  Consecutive Exactly six digits: 4.0 - 6.557377049180328 %
+   Consecutive Exactly six digits: 4.0 - 6.557377049180328 %
   Are six digits date: 0.0 - 0.0 %
 
-  DDMMYY 0.0 	 	 0.0 % 	 NaN %
-  MMDDYY 0.0 	 	 0.0 % 	 NaN %
-  YYMMDD 0.0 	 	 0.0 % 	 NaN %
+  Amount Date       total percent       date6 percent       digits6 percent
+  DDMMYY 0.0 	 	 0.0 % 	 NaN % 	 0.0 %
+
+  MMDDYY 0.0 	 	 0.0 % 	 NaN % 	 0.0 %
+  YYMMDD 0.0 	 	 0.0 % 	 NaN % 	 0.0 %
  -------------------------------------------------------------------------------------------------------------
 2	3.279%	123456
 2	3.279%	123456789

@@ -18,7 +18,7 @@ class PasswordDB
       end.flatten.map do |e|
         s = e[:line].split
         puts "Null password in #{e[:file]}! Count: #{s[0]}" if s[1].nil?
-        
+
         {file: e[:file], count: s[0].to_i, pass: s[1]}
       end
   end
@@ -26,21 +26,21 @@ class PasswordDB
   def database
     @database
   end
-  
+
   def total
     @total = @database.reduce(0) do |partial, e|
       partial += e[:count]
     end if @total.nil?
-    
+
     @total
   end
-  
+
   def files
     @files = @database.map{|e| e[:file] }.uniq if @files.nil?
-    
+
     @files
   end
-  
+
   def group_all
     @database.group_by{|e| e[:pass] }.map do |k, g|
       {
@@ -92,7 +92,7 @@ def date_pattern(passwords)
       #  YYYYMMDD
       yyyymmdd += 1 if is_date_eight(dd, mm, yyyy)
     # 6 digits patterns
-    else 
+    else
       if e[:pass] =~ /^[0-9]{6}$/
         six_digits += 1
         dd =  e[:pass][0..1].to_i
@@ -114,21 +114,31 @@ def date_pattern(passwords)
     end
   end
   eight_digits_percent = ( eight_digits/passwords.total ) * 100.00
+  eight_digits_date = ddmmyyyy + mmddyyyy + yyyymmdd
+  eight_digits_date_percent = (eight_digits_date)/passwords.total * 100
+
   six_digits_percent = ( six_digits/passwords.total ) * 100.00
-<<EOF   
+  six_digits_date = ddmmyy + mmddyy + yymmdd
+  six_digits_date_percent = (six_digits_date)/passwords.total * 100
+<<EOF
   -------------------------------------------------------------------------------------------------------------
   Consecutive Exactly eight digits: #{eight_digits} - #{eight_digits_percent} %
-  DDMMYYYY #{ddmmyyyy} \t #{( ddmmyyyy/passwords.total ) * 100.00} % \t #{ ( ddmmyyyy/eight_digits ) * 100.00} %
-  MMDDYYYY #{mmddyyyy} \t #{( mmddyyyy/passwords.total ) * 100.00} % \t #{ ( mmddyyyy/eight_digits ) * 100.00} %
-  YYYYMMDD #{yyyymmdd} \t #{( yyyymmdd/passwords.total ) * 100.00} % \t #{ ( yyyymmdd/eight_digits ) * 100.00} % 
+  Are eight digits date: #{eight_digits_date} - #{eight_digits_date_percent} %
+
+
+  DDMMYYYY #{ddmmyyyy} \t #{( ddmmyyyy/passwords.total ) * 100.00} % \t #{ ( ddmmyyyy/eight_digits_date) * 100.00} %
+  MMDDYYYY #{mmddyyyy} \t #{( mmddyyyy/passwords.total ) * 100.00} % \t #{ ( mmddyyyy/eight_digits_date) * 100.00} %
+  YYYYMMDD #{yyyymmdd} \t #{( yyyymmdd/passwords.total ) * 100.00} % \t #{ ( yyyymmdd/eight_digits_date) * 100.00} %
   -------------------------------------------------------------------------------------------------------------
 
   -------------------------------------------------------------------------------------------------------------
   Consecutive Exactly six digits: #{six_digits} - #{six_digits_percent} %
-  DDMMYY #{ddmmyy} \t \t #{( ddmmyy/passwords.total ) * 100.00} % \t #{ ( ddmmyy/six_digits ) * 100.00} %
-  MMDDYY #{mmddyy} \t \t #{( mmddyy/passwords.total ) * 100.00} % \t #{ ( mmddyy/six_digits ) * 100.00} %
-  YYMMDD #{yymmdd} \t \t #{( yymmdd/passwords.total ) * 100.00} % \t #{ ( yymmdd/six_digits ) * 100.00} % 
-  -------------------------------------------------------------------------------------------------------------
+  Are six digits date: #{six_digits_date} - #{six_digits_date_percent} %
+
+  DDMMYY #{ddmmyy} \t \t #{( ddmmyy/passwords.total ) * 100.00} % \t #{ ( ddmmyy/six_digits_date ) * 100.00} %
+  MMDDYY #{mmddyy} \t \t #{( mmddyy/passwords.total ) * 100.00} % \t #{ ( mmddyy/six_digits_date ) * 100.00} %
+  YYMMDD #{yymmdd} \t \t #{( yymmdd/passwords.total ) * 100.00} % \t #{ ( yymmdd/six_digits_date ) * 100.00} %
+ -------------------------------------------------------------------------------------------------------------
 EOF
 end
 
@@ -146,7 +156,7 @@ leak_summary =
       "#{e[:count]}\t"\
       "#{'%.3f' % (e[:count].to_f * 100 / passwords.total)}%\t"\
       "#{e[:pass]}\n"
-  end 
+  end
 
 
 IO.write("leak_summary.txt", leak_summary)

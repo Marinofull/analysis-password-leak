@@ -145,13 +145,34 @@ def date_pattern(passwords)
 EOF
 end
 
+def charset_analysis(passwords)
+  charset = {}
+  total = 0.00
+  passwords.group_all.each do |e|
+    e[:pass].split("").each do |char|
+      charset[char] = 0 if charset[char].nil?
+      charset[char] += e[:count]
+      total += e[:count]
+    end unless e[:pass].nil?
+  end
+  str = "\t CHAR\t|\tQTD\t|\t% occurence\t\n"
+  charset.sort.reduce(str) do |str, k|
+    str += "\t#{k[0]}\t|\t#{k[1]}\t|\t#{k[1]/total} %\n"
+  end
+end
+
 passwords = PasswordDB.new(ARGV)
+
+
+files = passwords.files.reduce("") do |str, f|
+  str += "\t#{f}\n"
+end 
+
+charset_summary = "#{files}\n#{charset_analysis(passwords)}"
 
 leak_summary =
   "Files analysed:\n" +
-  passwords.files.reduce("") do |str, f|
-    str += "\t#{f}\n"
-  end +
+  files +
   "Total: #{passwords.total}\n" +
   date_pattern(passwords) +
   passwords.group_all.sort_by{|e| e[:count] }.reverse.reduce("") do |str, e|
@@ -163,3 +184,4 @@ leak_summary =
 
 
 IO.write("leak_summary.txt", leak_summary)
+IO.write("charset_summary.txt", charset_summary)

@@ -1,3 +1,5 @@
+require_relative 'gnuplot'
+
 class PasswordDB
   def initialize(entry_list)
     @database =
@@ -178,8 +180,6 @@ def structure_analysis(passwords)
 EOF
 end
 
-
-
 def charset_analysis(passwords)
   charset = {}
   total = 0.00
@@ -190,9 +190,8 @@ def charset_analysis(passwords)
       total += e[:count]
     end unless e[:pass].nil?
   end
-  str = "\t CHAR\t|\tQTD\t|\t% occurence\t\n"
-  charset.sort.reduce(str) do |str, k|
-    str += "\t#{k[0]}\t|\t#{k[1]}\t|\t#{k[1]/total} %\n"
+  charset.sort_by{|k,v| v}.reverse.reduce("") do |str, k|
+    str += "#{k[0]}\t#{k[1]/total}\t#{k[1]}\n"
   end
 end
 
@@ -204,7 +203,7 @@ files = passwords.files.reduce("") do |str, f|
   str += "\t#{f}\n"
 end 
 
-charset_summary = "#{files}\n#{charset_analysis(passwords)}"
+charset_summary = "#{charset_analysis(passwords)}"
 
 
 leak_summary =
@@ -223,3 +222,4 @@ leak_summary =
 IO.write("leak_summary.txt", leak_summary)
 IO.write("charset_summary.txt", charset_summary)
 IO.write("structure_summary.txt", structure_summary)
+plot_hist("charset_summary.txt", "charset.png", "Charsets", "Frequência", "Histograma do uso dos charsets na escala logarítimica")

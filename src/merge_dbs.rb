@@ -146,6 +146,20 @@ def date_pattern(passwords)
 EOF
 end
 
+def password_structure(pass)
+  pass.chars.map do |c|
+    if c =~ /[0-9]/
+      'D'
+    elsif c =~ /[a-zA-Z]/
+      'L'
+    elsif c == ' '
+      ''
+    else
+      c
+    end
+  end.join unless pass.nil?
+end
+
 def structure_analysis(passwords)
   any_digits = 0
   only_lowercase_letter = 0
@@ -154,6 +168,10 @@ def structure_analysis(passwords)
   digit_and_symbols = 0
   symbols = 0
   lowercase_digit_symbols = 0
+  
+  structures = {}
+  structures.default_proc = proc { 0 }
+  
   passwords.group_all.each do |e|
     any_digits += e[:count] if e[:pass] =~ /^\d+$/
     only_lowercase_letter += e[:count] if e[:pass] =~ /^[a-z]+$/
@@ -162,10 +180,17 @@ def structure_analysis(passwords)
     digit_and_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d)+$/
     symbols += e[:count] if e[:pass] =~ /^(\W|_)+$/
     lowercase_digit_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d|[a-z])+$/ and e[:pass] =~ /(\W|_)+/ and e[:pass] =~ /\d+/ and e[:pass] =~ /[a-z]+/
+    
+    struct = password_structure(e[:pass])
+    structures[struct] += e[:count]
   end
   lowercase_and_digits -= ( any_digits + only_lowercase_letter )
   lowercase_and_symbols -= ( symbols + only_lowercase_letter )
   digit_and_symbols -= ( symbols + any_digits )
+  
+  structures_text = structures.sort_by{|e| e[1] }.reverse.reduce("\n") do |str, e|
+    str += "      #{e[0]}\t\t#{e[1]}\n"
+  end
 
   <<EOF
     #{any_digits} any digits
@@ -175,6 +200,8 @@ def structure_analysis(passwords)
     #{digit_and_symbols} digit and symbols
     #{symbols} symbols
     #{lowercase_digit_symbols} lowercase digit symbols
+    ==================================================
+    Structures:#{structures_text}
 EOF
 end
 

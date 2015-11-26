@@ -1,3 +1,5 @@
+require_relative 'gnuplot'
+
 class PasswordDB
   def initialize(entry_list)
     @database =
@@ -148,6 +150,20 @@ def date_pattern(passwords)
 EOF
 end
 
+def password_structure(pass)
+  pass.chars.map do |c|
+    if c =~ /[0-9]/
+      'D'
+    elsif c =~ /[a-zA-Z]/
+      'L'
+    elsif c == ' '
+      ''
+    else
+      c
+    end
+  end.join unless pass.nil?
+end
+
 def structure_analysis(passwords)
   any_digits = 0
   only_lowercase_letter = 0
@@ -158,6 +174,9 @@ def structure_analysis(passwords)
   lowercase_digit_symbols = 0
   bad_words = 0
   
+  structures = {}
+  structures.default_proc = proc { 0 }
+  
   passwords.group_all.each do |e|
     any_digits += e[:count] if e[:pass] =~ /^\d+$/
     only_lowercase_letter += e[:count] if e[:pass] =~ /^[a-z]+$/
@@ -167,10 +186,17 @@ def structure_analysis(passwords)
     symbols += e[:count] if e[:pass] =~ /^(\W|_)+$/
     lowercase_digit_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d|[a-z])+$/ and e[:pass] =~ /(\W|_)+/ and e[:pass] =~ /\d+/ and e[:pass] =~ /[a-z]+/
     bad_words += e[:count] if BAD_WORDS.any? {|bad| e[:pass].downcase.include?(bad) unless e[:pass].nil? }
+    
+    struct = password_structure(e[:pass])
+    structures[struct] += e[:count]
   end
   lowercase_and_digits -= ( any_digits + only_lowercase_letter )
   lowercase_and_symbols -= ( symbols + only_lowercase_letter )
   digit_and_symbols -= ( symbols + any_digits )
+  
+  structures_text = structures.sort_by{|e| e[1] }.reverse.reduce("\n") do |str, e|
+    str += "      #{e[0]}\t\t#{e[1]}\n"
+  end
 
   <<EOF
     #{any_digits} any digits
@@ -181,10 +207,10 @@ def structure_analysis(passwords)
     #{symbols} symbols
     #{lowercase_digit_symbols} lowercase digit symbols
     #{bad_words} contain bad words
+    ==================================================
+    Structures:#{structures_text}
 EOF
 end
-
-
 
 def charset_analysis(passwords)
   charset = {}
@@ -196,9 +222,8 @@ def charset_analysis(passwords)
       total += e[:count]
     end unless e[:pass].nil?
   end
-  str = "\t CHAR\t|\tQTD\t|\t% occurence\t\n"
-  charset.sort.reduce(str) do |str, k|
-    str += "\t#{k[0]}\t|\t#{k[1]}\t|\t#{k[1]/total} %\n"
+  charset.sort_by{|k,v| v}.reverse.reduce("") do |str, k|
+    str += "#{k[0]}\t#{k[1]/total}\t#{k[1]}\n"
   end
 end
 
@@ -210,7 +235,7 @@ files = passwords.files.reduce("") do |str, f|
   str += "\t#{f}\n"
 end 
 
-charset_summary = "#{files}\n#{charset_analysis(passwords)}"
+charset_summary = "#{charset_analysis(passwords)}"
 
 
 leak_summary =
@@ -229,3 +254,4 @@ leak_summary =
 IO.write("leak_summary.txt", leak_summary)
 IO.write("charset_summary.txt", charset_summary)
 IO.write("structure_summary.txt", structure_summary)
+plot_hist("charset_summary.txt", "charset.png", "Charsets", "Frequência", "Histograma do uso dos charsets na escala logarítimica")

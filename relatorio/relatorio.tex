@@ -1,73 +1,73 @@
-        \documentclass[12pt]{article}
+\documentclass[12pt]{article}
 
-        \usepackage{sbc-template}
+\usepackage{sbc-template}
 
-        \usepackage{graphicx,url}
+\usepackage{graphicx,url}
 
-        %\usepackage[brazil]{babel}
-        \usepackage[latin1]{inputenc}
-
-
-        \sloppy
-
-        \title{Uma análise de padões em senhas}
-
-        \author{Marino Souza S., Nilton V. C. Júnior, Luiz R. Rios}
-
-        \address{Instituto de Matemática -- Universidade Federal da Bahia
-          (UFBA)\\
-          \email{\{marino, niltonvasques\}@openmailbox.org, luizromario@gmail.com}
-        }
-
-        \begin{document}
-
-        \maketitle
-
-        \begin{resumo}
-        O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}. O presente artigo visa executar uma análise em cima de senhas web com o objetivo de encontrar padrões que futuramente sirvam para melhorar dicionário de adivinhação, ou desenvolver melhores políticas de senhas.
-        \end{resumo}
+%\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
 
 
-        \section{Introdução}
-        
-        As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no website SkullSecurity (https://blog.skullsecurity.org/) contendo senhas de provavel usuários de lingua inglesa, e outra base encontrada no PasteBin contendo um orgão de defesa de um governo de um país que neste trabalho será omitido o nome, algumas vezes utilizado o codnome: BrArmy.
-        A quantidade de senhas totalizaram 64,493 provindas do SkullSecurity e 7,834 do BrArmy. Em ambos as bases de senhas haviam senhas em branco e com charset inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da SkullSecurity e 7,833 da BrArmy.
-        Durante este trabalho os autores preferiam utilizar o sistema internacional para representação de números reais e multiplos de mil.
+\sloppy
 
-        \section{Estatísticas Comuns} \label{sec:firstpage}
+\title{Uma análise de padões em senhas}
 
-        fazer uma explicação da sessão.
+\author{Marino Souza S., Nilton V. C. Júnior, Luiz R. Rios}
 
-        \begin{table}[ht]
-            \centering
-            
-            \begin{tabular}{clr}
-                \hline
-                & Skull leak & BR army\\
-                \hline
-                1 & 123456(0.202\%) & 12345678(4.864\%)\\
-                2 & password1(0.119\%) & 123456789(1.009\%) \\
-                3 & fuck(0.092\%) & 87654321(0.230\%)\\
-                4 & abc123(0.090\%) & 10203040(0.204\%)\\
-                5 & fuckyou(0.064\%) & 06121966(0.153\%)\\
-                \hline
-            \end{tabular}
+\address{Instituto de Matemática -- Universidade Federal da Bahia
+(UFBA)\\
+\email{\{marino, niltonvasques\}@openmailbox.org, luizromario@gmail.com}
+}
 
-            \caption{Senhas mais usadas nas duas bases}
-            \label{table:tablegeneral}
+\begin{document}
 
-        \end{table}
+\maketitle
 
-        Explicar oq a tabela \ref{table:tablegeneral} significa.
-        %Bình Hòa Massacre, Guerra do vietnam 6 de dezembro de 1966
+\begin{resumo}
+O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}. O presente artigo visa executar uma análise em cima de senhas web com o objetivo de encontrar padrões que futuramente sirvam para melhorar dicionário de adivinhação, ou desenvolver melhores políticas de senhas.
+\end{resumo}
 
-        The abstract and ``resumo'' (if is the case) must be in 12 point Times font,
-        indented 0.8cm on both sides. The word \textbf{Abstract} and \textbf{Resumo},
-        should be written in boldface and must precede the text.
 
-        \subsection{Subsections}
+\section{Introdução}
 
-        The subsection titles must be in boldface, 12pt, flush left.
+As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no website SkullSecurity (https://blog.skullsecurity.org/) contendo senhas de provavel usuários de lingua inglesa, e outra base encontrada no PasteBin contendo um orgão de defesa de um governo de um país que neste trabalho será omitido o nome, algumas vezes utilizado o codnome: BrArmy.
+A quantidade de senhas totalizaram 64,493 provindas do SkullSecurity e 7,834 do BrArmy. Em ambos as bases de senhas haviam senhas em branco e com charset inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da SkullSecurity e 7,833 da BrArmy.
+Durante este trabalho os autores preferiam utilizar o sistema internacional para representação de números reais e multiplos de mil.
+
+\section{Estatísticas Comuns} \label{sec:firstpage}
+
+fazer uma explicação da sessão.
+
+\begin{table}[ht]
+    \centering
+
+    \begin{tabular}{clr}
+        \hline
+        & Skull leak & BR army\\
+        \hline
+        1 & 123456(0.202\%) & 12345678(4.864\%)\\
+        2 & password1(0.119\%) & 123456789(1.009\%) \\
+        3 & fuck(0.092\%) & 87654321(0.230\%)\\
+        4 & abc123(0.090\%) & 10203040(0.204\%)\\
+        5 & fuckyou(0.064\%) & 06121966(0.153\%)\\
+        \hline
+    \end{tabular}
+
+    \caption{Senhas mais usadas nas duas bases}
+    \label{table:tablegeneral}
+
+\end{table}
+
+Explicar oq a tabela \ref{table:tablegeneral} significa.
+%Bình Hòa Massacre, Guerra do vietnam 6 de dezembro de 1966
+
+The abstract and ``resumo'' (if is the case) must be in 12 point Times font,
+indented 0.8cm on both sides. The word \textbf{Abstract} and \textbf{Resumo},
+should be written in boldface and must precede the text.
+
+\subsection{Subsections}
+
+The subsection titles must be in boldface, 12pt, flush left.
 
 \begin{table}[h]
     \centering
@@ -106,27 +106,27 @@
 
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[!h]
     \centering
-            
-     \begin{tabular}{clr}
-         \hline
-         & Skull leak & BR army\\
-         \hline
-         1 & password1(0.119\%) & flamengo(0.115\%)\\
-         2 & fuck(0.092\%) & exercito(0.115\%) \\
-         3 & fuckyou(0.064\%) & infantaria(0.115\%)\\
-         4 & monkey(0.045\%) & cavalaria(0.102\%)\\
-         5 & iloveyou1(0.043\%) & guilherme(0.077\%)\\
-         \hline
-     \end{tabular}
 
-     \caption{Palavras Inglesas/Portuguesas mais usadas}
-     \label{table:most-comon-language}
+    \begin{tabular}{clr}
+        \hline
+        & Skull leak & BR army\\
+        \hline
+        1 & password1(0.119\%) & flamengo(0.115\%)\\
+        2 & fuck(0.092\%) & exercito(0.115\%) \\
+        3 & fuckyou(0.064\%) & infantaria(0.115\%)\\
+        4 & monkey(0.045\%) & cavalaria(0.102\%)\\
+        5 & iloveyou1(0.043\%) & guilherme(0.077\%)\\
+        \hline
+    \end{tabular}
+
+    \caption{Palavras Inglesas/Portuguesas mais usadas}
+    \label{table:most-comon-language}
 
 \end{table}
-        
-        Curiosamente os usuário de lingua inglesa preferem senhas relacionadas a palavras de baixo calão, como apresentado em \ref{table:most-comon-language}, enquanto os usuário da base BrArmy recorrem em sua maioria a palavras que tem alguma relação as forças armadas. 
+
+Curiosamente os usuário de lingua inglesa preferem senhas relacionadas a palavras de baixo calão, como apresentado em \ref{table:most-comon-language}, enquanto os usuário da base BrArmy recorrem em sua maioria a palavras que tem alguma relação as forças armadas.
 
 
 \section{Figures and Captions}\label{sec:figs}
@@ -155,8 +155,7 @@ space before and after each caption.
 \section{References}
 
 Bibliographic references must be unambiguous and uniform.  We recommend giving
-the author names references in brackets, e.g. \cite{knuth:84},
-\cite{boulic:91}, and \cite{smith:99}.
+the author names references in brackets, e.g. \cite{chinas}.
 
 \bibliographystyle{sbc}
 \bibliography{referencias}

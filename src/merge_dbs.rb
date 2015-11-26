@@ -58,6 +58,7 @@ end
 BAD_WORDS = IO.readlines(__dir__ + '/badwords.txt').map &:strip
 
 @last_day_of_month = [0,31,29,31,30,31,30,31,31,30,31,30,31]
+KBD_ROWS = %w(1234567890 qwertyop asdfghjkl zxcvbnm)
 
 def is_date_eight(dd, mm, yyyy)
   mm.between?(1, 12) && dd.between?(1,@last_day_of_month[mm]) and yyyy.between?(1900, Time.now.year)
@@ -173,6 +174,7 @@ def structure_analysis(passwords)
   symbols = 0
   lowercase_digit_symbols = 0
   bad_words = 0
+  samerow = 0
   
   structures = {}
   structures.default_proc = proc { 0 }
@@ -186,6 +188,7 @@ def structure_analysis(passwords)
     symbols += e[:count] if e[:pass] =~ /^(\W|_)+$/
     lowercase_digit_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d|[a-z])+$/ and e[:pass] =~ /(\W|_)+/ and e[:pass] =~ /\d+/ and e[:pass] =~ /[a-z]+/
     bad_words += e[:count] if BAD_WORDS.any? {|bad| e[:pass].downcase.include?(bad) unless e[:pass].nil? }
+    samerow += e[:count] if KBD_ROWS.any?{|r| r.include?(e[:pass].strip.downcase) unless e[:pass].nil? }
     
     struct = password_structure(e[:pass])
     structures[struct] += e[:count]
@@ -207,6 +210,7 @@ def structure_analysis(passwords)
     #{symbols} symbols
     #{lowercase_digit_symbols} lowercase digit symbols
     #{bad_words} contain bad words
+    #{samerow} with characters in the same row
     ==================================================
     Structures:#{structures_text}
 EOF

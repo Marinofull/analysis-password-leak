@@ -53,6 +53,8 @@ class PasswordDB
   end
 end
 
+BAD_WORDS = IO.readlines(__dir__ + '/badwords.txt').map &:strip
+
 @last_day_of_month = [0,31,29,31,30,31,30,31,31,30,31,30,31]
 
 def is_date_eight(dd, mm, yyyy)
@@ -154,6 +156,8 @@ def structure_analysis(passwords)
   digit_and_symbols = 0
   symbols = 0
   lowercase_digit_symbols = 0
+  bad_words = 0
+  
   passwords.group_all.each do |e|
     any_digits += e[:count] if e[:pass] =~ /^\d+$/
     only_lowercase_letter += e[:count] if e[:pass] =~ /^[a-z]+$/
@@ -162,6 +166,7 @@ def structure_analysis(passwords)
     digit_and_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d)+$/
     symbols += e[:count] if e[:pass] =~ /^(\W|_)+$/
     lowercase_digit_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d|[a-z])+$/ and e[:pass] =~ /(\W|_)+/ and e[:pass] =~ /\d+/ and e[:pass] =~ /[a-z]+/
+    bad_words += e[:count] if BAD_WORDS.any? {|bad| e[:pass].downcase.include?(bad) unless e[:pass].nil? }
   end
   lowercase_and_digits -= ( any_digits + only_lowercase_letter )
   lowercase_and_symbols -= ( symbols + only_lowercase_letter )
@@ -175,6 +180,7 @@ def structure_analysis(passwords)
     #{digit_and_symbols} digit and symbols
     #{symbols} symbols
     #{lowercase_digit_symbols} lowercase digit symbols
+    #{bad_words} contain bad words
 EOF
 end
 

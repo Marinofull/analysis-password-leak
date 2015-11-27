@@ -30,14 +30,14 @@ O método de adivinhação de senhas por força bruta necessita de um bom dicionário
 
 \section{Introdução}
 
-As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no \textit{website} \textit{SkullSecurity} (https://blog.skullsecurity.org/) contendo senhas de provavel usuários de lingua inglesa, e outra base dispinibilizada também de forma pública contendo senhas de um orgão de defesa de um governo de um país que neste trabalho terá o nome omitido, utilizando o codnome: \texttt{BrArmy}.
+As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no \textit{website} \textit{SkullSecurity} \cite{skull} contendo senhas de provavel usuários de lingua inglesa, e outra base dispinibilizada também de forma pública contendo senhas de um orgão de defesa de um governo de um país que neste trabalho terá o nome omitido, utilizando o codnome: \texttt{BrArmy}.
 A quantidade de senhas totalizaram 64,493 provindas do \textit{SkullSecurity} e 7,834 do \texttt{BrArmy}. Em ambos as bases de senhas haviam senhas em branco e com charset inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da \textit{SkullSecurity} e 7,833 da \texttt{BrArmy}.
 
 Durante este trabalho os autores preferiam utilizar o sistema internacional para representação de números reais, separando por \texttt{vírgula}, e multiplos de mil, separando por \texttt{ponto}.
 
 \section{Estatísticas Comuns} \label{sec:firstpage}
 
-fazer uma explicação da sessão.
+Entre as mais de 70 mil senhas analisadas, uma diferença enorme se deataca na composição destas. As tabelas abaixo mostram algumas dessas diferenças.
 
 \begin{table}[ht]
     \centering
@@ -59,7 +59,7 @@ fazer uma explicação da sessão.
 
 \end{table}
 
-Explicar oq a tabela \ref{table:tablegeneral} significa.
+Na tabela \ref{table:tablegeneral} é mostrado as senhas mais usadas e o seu respectivo percentual, na primeira colona há a disposição das cinco senhas mais usadas entre as bases do \texttt{SkullSecurity} e na segunda é disposto as senhas da base \texttt{BrArmy}. Enquanto as senhas de provaveis usuários de língua inglesa são mais mistas (letras e números) as senhas de usuários de língua portuguesa usam mais da estrutura unicamente numérica.
 %Bình Hòa Massacre, Guerra do vietnam 6 de dezembro de 1966
 
 \begin{table}[!h]
@@ -102,8 +102,6 @@ Curiosamente, entre as senhas de língua inglesa é mais comum termos palavras esc
 
 Nas imagens \ref{fig:charset-skull} e \ref{fig:charset-br} temos a distribuição de cada caractere em cada base. É fácil notar que os valores mais altos da \ref{fig:charset-br} são responsáveis pelos caracters numéricos, enquanto na \ref{fig:charset-skull} temos uma maior distribuição destes.
 
-motivar os proximos dados
-
 \begin{table}[!h]
     \centering
 
@@ -143,7 +141,7 @@ motivar os proximos dados
 
 Na tabela \ref{table:structure} temos as estruturas escritas com L e D, que representam letra e número, respectivamente. Abaixo temos a porcentagem de cada uma.
 
-motivar as tabelas de datas
+Após essa exposição de grande percentual de senhas numéricas, vale saber qual o padrão que estas senhas seguem. Nos dados a seguir são analisados apenas as senhas que são suspeitas de seram datas.
 
 \begin{table}[!h]
     \centering
@@ -184,7 +182,15 @@ motivar as tabelas de datas
 
 A comparação entre os dados apresentados nas tabelas \ref{table:table-date-eight} e \ref{table:table-date-six} são muito distintas, enquanto na primeira vemos uma quantidade enorme de datas provindas da base \texttt{BrArmy}, na segunda não é encontrado nenhum padrão de data de exatamente seis dígitos (DDDDDD), embora haja apenas uma senha no formato DD.DD.DD e mais uma no formato DD/DD/DD.
 
+%\subsection{name}
+
+%introduçaõ da sessão
+
 \section{Considerações Finais}
+
+Tais dados apresentados neste trabalho não são suficientes para concluir quais usuários daquele idioma possuiem senhas mais facéis de adivinhação, porém é um dado que deve ser considerado no momento que se pretende criar uma política de senhas mais fortes, não permitindo que os usuários definam senhas dos padrões mais comuns. Por outro lado, estes dados também servem para fortalecer um dicionário de ataque, a fim de aumentar a eficiêcia de uma adivinhação por força bruta.
+
+Todas as etapas deste trabalho encontram-se disponíveis em \cite{github}.
 
 \section{References}
 

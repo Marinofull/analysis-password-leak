@@ -1,0 +1,41 @@
+    11.0 any digits 18.033
+    26.0 only lowercase letters 42.623 
+    20.0 lowercase and digits 32.787
+    0.0 lowercase and symbols 0.000 
+    0.0 digit and symbols 0.000
+    0.0 symbols 0.000
+    0.0 lowercase digit symbols 0.000 
+    0.0 contain bad words 0.000
+    4.0 with characters in the same row 6.557
+    ==================================================
+    Structures:
+      LLLLLL		11	18.033%
+      LLLLLLLL		5	8.197%
+      DDDDDD		5	8.197%
+      LLLLLLLLLLLL		3	4.918%
+      DDDDDDDDDD		3	4.918%
+      LLLLLLLLDD		2	3.279%
+      LLLLDD		2	3.279%
+      LLLLLLLLLL		2	3.279%
+      LLLLLLLLL		2	3.279%
+      LLLLLDDD		2	3.279%
+      LLLLLLL		2	3.279%
+      LLLLLLDD		2	3.279%
+      LLLLLDD		2	3.279%
+      DDDDDDDDD		2	3.279%
+      LLLDDDDD		2	3.279%
+      DDDDDDDDDL		1	1.639%
+      DDDLLLLL		1	1.639%
+      DDDDLL		1	1.639%
+      DDDDDDDD		1	1.639%
+      LLLLLLLLLD		1	1.639%
+      LLLLLLLLLLLLLL		1	1.639%
+      LLLLLLLLLLL		1	1.639%
+      LDLDLL		1	1.639%
+      LLLLLLD		1	1.639%
+      LLLLL		1	1.639%
+      LLLLDDDDDD		1	1.639%
+      LLLLLLLDD		1	1.639%
+      LLLLLLLDDDD		1	1.639%
+      LLLDDLLL		1	1.639%
+

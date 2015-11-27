@@ -24,14 +24,14 @@
 \maketitle
 
 \begin{resumo}
-O método de adivinhação de senhas por força bruta pode alcançar maior eficiência se faz uso de um dicionário de ataque com padões de senhas. Motivando-se no trabalho de \cite{chinas}. O presente artigo visa executar uma análise em cima de senhas \textit{web} com o objetivo de encontrar padrões que futuramente sirvam para melhorar dicionários de adivinhação, ou desenvolver melhores políticas de senhas.
+O método de adivinhação de senhas por força bruta pode alcançar maior eficiência se faz uso de um dicionário de ataque com padões de senhas. Motivando-se no trabalho de \cite{chinas} este trabalho visa executar uma análise em cima de senhas \textit{web} com o objetivo de encontrar padrões que futuramente sirvam para melhorar dicionários de adivinhação, ou desenvolver melhores políticas de senhas.
 \end{resumo}
 
 
 \section{Introdução}
 
-As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no \textit{website} \textit{SkullSecurity} \cite{skull} contendo senhas de provavel usuários de lingua inglesa, e outra base dispinibilizada também de forma pública contendo senhas de um orgão de defesa de um governo de um país que neste trabalho terá o nome omitido, utilizando o codnome: \texttt{BrArmy}.
-A quantidade de senhas totalizaram 64,493 provindas do \textit{SkullSecurity} e 7,834 do \texttt{BrArmy}. Em ambos as bases de senhas haviam senhas em branco e com charset inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da \textit{SkullSecurity} e 7,833 da \texttt{BrArmy}.
+As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no \textit{website} \textit{SkullSecurity} \cite{skull} contendo senhas de provavéis usuários de lingua inglesa, e outra base dispinibilizada também de forma pública contendo senhas de um orgão de defesa de um governo de um país que neste trabalho terá o nome omitido, utilizando o codnome: \texttt{BrArmy}.
+A quantidade de senhas totalizaram 64,493 provindas do \textit{SkullSecurity} e 7,834 do \texttt{BrArmy}. Em ambos as bases de senhas haviam senhas em branco e com \textit{charset} inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da \textit{SkullSecurity} e 7,833 da \texttt{BrArmy}.
 
 Durante este trabalho os autores preferiam utilizar o sistema internacional para representação de números reais, separando por \texttt{vírgula}, e multiplos de mil, separando por \texttt{ponto}.
 
@@ -126,7 +126,7 @@ Nas imagens \ref{fig:charset-skull} e \ref{fig:charset-br} temos a distribuição 
 
     \begin{tabular}{r r r r r}
         \hline
-        & Estrutura Mais Comum & \% & Segunda Mais Comum & \% \\
+        & Estrutura Mais Comum & & Segunda Mais Comum & \\
         \hline
         SkullSecurity & LLLLLL & 6.874\% & LLLLLLD & 6.208\% \\
         \hline
@@ -157,7 +157,7 @@ Após essa exposição de grande percentual de senhas numéricas, vale saber qual o 
         \hline
     \end{tabular}
 
-    \caption{texto da tabela}
+    \caption{Proporção das senhas de oito dígitos.}
     \label{table:table-date-eight}
 
 \end{table}
@@ -175,7 +175,7 @@ Após essa exposição de grande percentual de senhas numéricas, vale saber qual o 
         \hline
     \end{tabular}
 
-    \caption{texto da tabela}
+    \caption{Proporção das senhas de seis dígitos.}
     \label{table:table-date-six}
 
 \end{table}

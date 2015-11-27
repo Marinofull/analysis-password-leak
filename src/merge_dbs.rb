@@ -49,7 +49,7 @@ class PasswordDB
         pass: k,
         count: g.map{|e| e[:count] }.reduce(&:+),
         files: g.map{|e| e[:file] }
-      } 
+      }
     end if @group.nil?
     @group
   end
@@ -166,19 +166,19 @@ def password_structure(pass)
 end
 
 def structure_analysis(passwords)
-  any_digits = 0.0
-  only_lowercase_letter = 0.0
-  lowercase_and_digits = 0.0
-  lowercase_and_symbols = 0.0
-  digit_and_symbols = 0.0
-  symbols = 0.0
-  lowercase_digit_symbols = 0.0
-  bad_words = 0.0
-  samerow = 0.0
-  
+  any_digits = 0
+  only_lowercase_letter = 0
+  lowercase_and_digits = 0
+  lowercase_and_symbols = 0
+  digit_and_symbols = 0
+  symbols = 0
+  lowercase_digit_symbols = 0
+  bad_words = 0
+  samerow = 0
+
   structures = {}
   structures.default_proc = proc { 0 }
-  
+
   passwords.group_all.each do |e|
     any_digits += e[:count] if e[:pass] =~ /^\d+$/
     only_lowercase_letter += e[:count] if e[:pass] =~ /^[a-z]+$/
@@ -189,28 +189,28 @@ def structure_analysis(passwords)
     lowercase_digit_symbols += e[:count] if e[:pass] =~ /^(\W|_|\d|[a-z])+$/ and e[:pass] =~ /(\W|_)+/ and e[:pass] =~ /\d+/ and e[:pass] =~ /[a-z]+/
     bad_words += e[:count] if BAD_WORDS.any? {|bad| e[:pass].downcase.include?(bad) unless e[:pass].nil? }
     samerow += e[:count] if KBD_ROWS.any?{|r| r.include?(e[:pass].strip.downcase) unless e[:pass].nil? }
-    
+
     struct = password_structure(e[:pass])
     structures[struct] += e[:count]
   end
   lowercase_and_digits -= ( any_digits + only_lowercase_letter )
   lowercase_and_symbols -= ( symbols + only_lowercase_letter )
   digit_and_symbols -= ( symbols + any_digits )
-  
+
   structures_text = structures.sort_by{|e| e[1] }.reverse.reduce("\n") do |str, e|
     str += "      #{e[0]}\t\t#{e[1]}\t#{'%.3f' % (e[1].to_f/passwords.total * 100)}%\n"
   end
 
   <<EOF
-    #{any_digits} any digits #{'%.3f' % (any_digits/passwords.total * 100)}
-    #{only_lowercase_letter} only lowercase letters #{'%.3f' % (only_lowercase_letter/passwords.total * 100)} 
-    #{lowercase_and_digits} lowercase and digits #{'%.3f' % (lowercase_and_digits/passwords.total * 100)}
-    #{lowercase_and_symbols} lowercase and symbols #{'%.3f' % (lowercase_and_symbols/passwords.total * 100)} 
-    #{digit_and_symbols} digit and symbols #{'%.3f' % (digit_and_symbols/passwords.total * 100)}
-    #{symbols} symbols #{'%.3f' % (symbols/passwords.total * 100)}
-    #{lowercase_digit_symbols} lowercase digit symbols #{'%.3f' % (lowercase_digit_symbols/passwords.total * 100)} 
-    #{bad_words} contain bad words #{'%.3f' % (bad_words/passwords.total * 100)}
-    #{samerow} with characters in the same row #{'%.3f' % (samerow/passwords.total * 100)}
+    #{any_digits} any digits #{'%.3f' % (any_digits.to_f/passwords.total * 100)}%
+    #{only_lowercase_letter} only lowercase letters #{'%.3f' % (only_lowercase_letter.to_f/passwords.total * 100)}%
+    #{lowercase_and_digits} lowercase and digits #{'%.3f' % (lowercase_and_digits.to_f/passwords.total * 100)}%
+    #{lowercase_and_symbols} lowercase and symbols #{'%.3f' % (lowercase_and_symbols.to_f/passwords.total * 100)}%
+    #{digit_and_symbols} digit and symbols #{'%.3f' % (digit_and_symbols.to_f/passwords.total * 100)}%
+    #{symbols} symbols #{'%.3f' % (symbols.to_f/passwords.total * 100)}%
+    #{lowercase_digit_symbols} lowercase digit symbols #{'%.3f' % (lowercase_digit_symbols.to_f/passwords.total * 100)}%
+    #{bad_words} contain bad words #{'%.3f' % (bad_words.to_f/passwords.total * 100)}%
+    #{samerow} with characters in the same row #{'%.3f' % (samerow.to_f/passwords.total * 100)}%
     ==================================================
     Structures:#{structures_text}
 EOF
@@ -237,7 +237,7 @@ structure_summary = structure_analysis(passwords)
 
 files = passwords.files.reduce("") do |str, f|
   str += "\t#{f}\n"
-end 
+end
 
 charset_summary = "#{charset_analysis(passwords)}"
 

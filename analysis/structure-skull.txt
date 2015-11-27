@@ -1,12 +1,12 @@
-    3961.0 any digits 6.145
-    15396.0 only lowercase letters 23.883 
-    36701.0 lowercase and digits 56.933
-    3047.0 lowercase and symbols 4.727 
-    52.0 digit and symbols 0.081
-    28.0 symbols 0.043
-    1312.0 lowercase digit symbols 2.035 
-    2051.0 contain bad words 3.182
-    410.0 with characters in the same row 0.636
+    3961 any digits 6.145%
+    15396 only lowercase letters 23.883%
+    36701 lowercase and digits 56.933%
+    3047 lowercase and symbols 4.727%
+    52 digit and symbols 0.081%
+    28 symbols 0.043%
+    1312 lowercase digit symbols 2.035%
+    2110 contain bad words 3.273%
+    410 with characters in the same row 0.636%
     ==================================================
     Structures:
       LLLLLL		4431	6.874%

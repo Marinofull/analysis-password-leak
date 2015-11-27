@@ -10,7 +10,7 @@
 
 \sloppy
 
-\title{Uma análise de padões em senhas}
+\title{Uma Análise Comparativa dos Padrões entre Senhas Brasileiras e de Língua Inglesa}
 
 \author{Marino Souza S., Nilton V. C. Júnior, Luiz R. Rios}
 
@@ -24,15 +24,16 @@
 \maketitle
 
 \begin{resumo}
-O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}. O presente artigo visa executar uma análise em cima de senhas web com o objetivo de encontrar padrões que futuramente sirvam para melhorar dicionário de adivinhação, ou desenvolver melhores políticas de senhas.
+O método de adivinhação de senhas por força bruta necessita de um bom dicionário a fim de conseguir o maior número de advinhações possíveis. Motivando-se no trabalho de \cite{chinas}. O presente artigo visa executar uma análise em cima de senhas \textit{web} com o objetivo de encontrar padrões que futuramente sirvam para melhorar dicionário de adivinhação, ou desenvolver melhores políticas de senhas.
 \end{resumo}
 
 
 \section{Introdução}
 
-As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no website SkullSecurity (https://blog.skullsecurity.org/) contendo senhas de provavel usuários de lingua inglesa, e outra base encontrada no PasteBin contendo um orgão de defesa de um governo de um país que neste trabalho será omitido o nome, algumas vezes utilizado o codnome: BrArmy.
-A quantidade de senhas totalizaram 64,493 provindas do SkullSecurity e 7,834 do BrArmy. Em ambos as bases de senhas haviam senhas em branco e com charset inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da SkullSecurity e 7,833 da BrArmy.
-Durante este trabalho os autores preferiam utilizar o sistema internacional para representação de números reais e multiplos de mil.
+As bases de senhas utilizadas neste trabalho foram encontradas em sua maior parte no \textit{website} \textit{SkullSecurity} (https://blog.skullsecurity.org/) contendo senhas de provavel usuários de lingua inglesa, e outra base dispinibilizada também de forma pública contendo senhas de um orgão de defesa de um governo de um país que neste trabalho terá o nome omitido, utilizando o codnome: \texttt{BrArmy}.
+A quantidade de senhas totalizaram 64,493 provindas do \textit{SkullSecurity} e 7,834 do \texttt{BrArmy}. Em ambos as bases de senhas haviam senhas em branco e com charset inválido que podem afetar as análises. Após a filtragem de alguns desses dados a quantidade total caiu para 64,463 da \textit{SkullSecurity} e 7,833 da \texttt{BrArmy}.
+
+Durante este trabalho os autores preferiam utilizar o sistema internacional para representação de números reais, separando por \texttt{vírgula}, e multiplos de mil, separando por \texttt{ponto}.
 
 \section{Estatísticas Comuns} \label{sec:firstpage}
 
@@ -43,7 +44,7 @@ fazer uma explicação da sessão.
 
     \begin{tabular}{clr}
         \hline
-        & Skull leak & BR army\\
+        & SkullSecurity & BrArmy\\
         \hline
         1 & 123456(0.202\%) & 12345678(4.864\%)\\
         2 & password1(0.119\%) & 123456789(1.009\%) \\
@@ -61,60 +62,12 @@ fazer uma explicação da sessão.
 Explicar oq a tabela \ref{table:tablegeneral} significa.
 %Bình Hòa Massacre, Guerra do vietnam 6 de dezembro de 1966
 
-The abstract and ``resumo'' (if is the case) must be in 12 point Times font,
-indented 0.8cm on both sides. The word \textbf{Abstract} and \textbf{Resumo},
-should be written in boldface and must precede the text.
-
-\subsection{Subsections}
-
-The subsection titles must be in boldface, 12pt, flush left.
-
-\begin{table}[h]
-    \centering
-
-    \begin{tabular}{r r r r r}
-        \hline
-        & Exatamente Oito & DDMMYYYY & MMDDYYYY & YYYYMMDD\\
-        & Dígitos & & &\\
-        \hline
-        Skull-leak & 638(0.990\%) & 25.547\% & 5.799\% & 2.978\%\\
-        \hline
-        BrArmy & 3,565(45.513\%) & 26.928\% & 10.659\% & 0.701\%\\
-        \hline
-    \end{tabular}
-
-    \caption{texto da tabela}
-    \label{table:table-date-eight}
-
-\end{table}
-
-
-\begin{table}[h]
-    \centering
-
-    \begin{tabular}{r r r r r}
-        \hline
-        & Exatamente Seis Dígitos & DDMMYY & MMDDYY & YYMMDD\\
-        \hline
-        Skull-leak & 1,066(1.654\%) & 36.210\% & 19.325\% & 11.445\%\\
-        \hline
-        BrArmy & 0\% & & & \\
-        \hline
-    \end{tabular}
-
-    \caption{texto da tabela}
-    \label{table:table-date-six}
-
-\end{table}
-
-\subsection{sub}
-
 \begin{table}[!h]
     \centering
 
     \begin{tabular}{clr}
         \hline
-        & Skull leak & BR army \\
+        & SkullSecurity & BrArmy \\
         \hline
         1 & password1(0.119\%) & flamengo(0.115\%)\\
         2 & fuck(0.092\%) & exercito(0.115\%) \\
@@ -129,11 +82,27 @@ The subsection titles must be in boldface, 12pt, flush left.
 
 \end{table}
 
-Curiosamente os usuário de lingua inglesa preferem senhas relacionadas a palavras de baixo calão, como apresentado em \ref{table:most-comon-language}, enquanto os usuário da base BrArmy recorrem em sua maioria a palavras que tem alguma relação as forças armadas.
+Curiosamente, entre as senhas de língua inglesa é mais comum termos palavras escatológicas, como apresentado em \ref{table:most-comon-language}, enquanto os usuário da base \texttt{BrArmy} recorrem, em sua maioria, a palavras que tem alguma relação as forças armadas.
 
-\subsection{sub}
+\subsection{Composição e Estruturas das senhas}
 
-introdução da sessão.
+\begin{figure}[!h]
+\centering
+\includegraphics[width=.9\textwidth]{fig/charset-skull.png}
+\caption{Senhas da base SkullSecurity.}
+\label{fig:charset-skull}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=.9\textwidth]{fig/charset-br.png}
+\caption{Senhas da base BrArmy}
+\label{fig:charset-br}
+\end{figure}
+
+Nas imagens \ref{fig:charset-skull} e \ref{fig:charset-br} temos a distribuição de cada caractere em cada base. É fácil notar que os valores mais altos da \ref{fig:charset-br} são responsáveis pelos caracters numéricos, enquanto na \ref{fig:charset-skull} temos uma maior distribuição destes.
+
+motivar os proximos dados
 
 \begin{table}[!h]
     \centering
@@ -143,7 +112,7 @@ introdução da sessão.
         & digit & lowercase & lowercase & lowercase & digit & lowercase & samerow\\
         & & & +digit & +symbol & +symbol & +digt+symbol &\\
         \hline
-        Skull-leak & 6.15\% & 23.89\% & 56.93\% & 4.73\% & 0.08\% & 2.04\% & 0.64\%\\
+        SkullSecurity & 6.15\% & 23.89\% & 56.93\% & 4.73\% & 0.08\% & 2.04\% & 0.64\%\\
         \hline
         BrArmy & 61.13\% & 11.44\% & 23.22\% & 0.09\% & 0.06\% & 0.26\% & 5.91\%\\
         \hline
@@ -154,34 +123,70 @@ introdução da sessão.
 
 \end{table}
 
+\begin{table}[!h]
+    \centering
 
-\section{Figures and Captions}\label{sec:figs}
+    \begin{tabular}{r r r r r}
+        \hline
+        & Estrutura Mais Comum & \% & Segunda Mais Comum & \% \\
+        \hline
+        SkullSecurity & LLLLLL & 6.874\% & LLLLLLD & 6.208\% \\
+        \hline
+        BrArmy & DDDDDDDD & 51.845\% & DDDDDDDDD & 6.485\% \\
+        \hline
+    \end{tabular}
 
+    \caption{Estruturas Mais Comuns da senhas.}
+    \label{table:structure}
 
-Figure and table captions should be centered if less than one line
-(Figure~1), otherwise justified and indented by 0.8cm on
-both margins, as shown in Figure~2. The caption font must
-be Helvetica, 10 point, boldface, with 6 points of space before and after each
-caption.
+\end{table}
 
-% \begin{figure}[ht]
-% \centering
-% \includegraphics[width=.5\textwidth]{fig1.jpg}
-% \caption{A typical figure}
-% \label{fig:exampleFig1}
-% \end{figure}
+Na tabela \ref{table:structure} temos as estruturas escritas com L e D, que representam letra e número, respectivamente. Abaixo temos a porcentagem de cada uma.
 
-In tables, try to avoid the use of colored or shaded backgrounds, and avoid
-thick, doubled, or unnecessary framing lines. When reporting empirical data,
-do not use more decimal digits than warranted by their precision and
-reproducibility. Table caption must be placed before the table (see Table 1)
-and the font used must also be Helvetica, 10 point, boldface, with 6 points of
-space before and after each caption.
+motivar as tabelas de datas
+
+\begin{table}[!h]
+    \centering
+
+    \begin{tabular}{r r r r r}
+        \hline
+        & Exatamente Oito & DDMMYYYY & MMDDYYYY & YYYYMMDD\\
+        & Dígitos & & &\\
+        \hline
+        SkullSecurity & 638(0.990\%) & 25.547\% & 5.799\% & 2.978\%\\
+        \hline
+        BrArmy & 3,565(45.513\%) & 26.928\% & 10.659\% & 0.701\%\\
+        \hline
+    \end{tabular}
+
+    \caption{texto da tabela}
+    \label{table:table-date-eight}
+
+\end{table}
+
+\begin{table}[!h]
+    \centering
+
+    \begin{tabular}{r r r r r}
+        \hline
+        & Exatamente Seis Dígitos & DDMMYY & MMDDYY & YYMMDD\\
+        \hline
+        SkullSecurity & 1,066(1.654\%) & 36.210\% & 19.325\% & 11.445\%\\
+        \hline
+        BrArmy & 0\% & & & \\
+        \hline
+    \end{tabular}
+
+    \caption{texto da tabela}
+    \label{table:table-date-six}
+
+\end{table}
+
+A comparação entre os dados apresentados nas tabelas \ref{table:table-date-eight} e \ref{table:table-date-six} são muito distintas, enquanto na primeira vemos uma quantidade enorme de datas provindas da base \texttt{BrArmy}, na segunda não é encontrado nenhum padrão de data de exatamente seis dígitos (DDDDDD), embora haja apenas uma senha no formato DD.DD.DD e mais uma no formato DD/DD/DD.
+
+\section{Considerações Finais}
 
 \section{References}
-
-Bibliographic references must be unambiguous and uniform.  We recommend giving
-the author names references in brackets, e.g. \cite{chinas}.
 
 \bibliographystyle{sbc}
 \bibliography{referencias}

@@ -1,3 +1,7 @@
+#The MIT License (MIT)
+#
+#Copyright (c) 2015 Marino Souza, Nilton Vasques and Romário Rios
+
 require_relative 'gnuplot'
 
 class PasswordDB
